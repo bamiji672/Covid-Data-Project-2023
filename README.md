@@ -7,7 +7,7 @@ Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, 
 
 Below are the SQL codes I used to extract the tables:
 ---------------------------------------------------------------------------------------------------------------------------------------
-1. **World Count - Total Cases, Total Deaths, Death Percentage - Shows the total number of Infections all over the world, total deaths, and percentage of world population that died from the infection**
+1. World Count - Total Cases, Total Deaths, Death Percentage - Shows the total number of Infections all over the world, total deaths, and percentage of world population that died from the infection
 
           select 
           	sum(cast (new_cases as float)) as [Total Cases],
@@ -16,7 +16,7 @@ Below are the SQL codes I used to extract the tables:
           from [Covid Deaths 2023]
           where continent is not null
    
-2. **Count of Death Per Continent**
+2. Count of Death Per Continent
 
           Select
           	Location, 
@@ -27,7 +27,7 @@ Below are the SQL codes I used to extract the tables:
           group by location
           order by 2 desc
    
-3. **Country Population vs Total Infected - This shows the percentage of each country's population that was infected with the virus**
+3. Country Population vs Total Infected - This shows the percentage of each country's population that was infected with the virus
 
           select
           	Location, Population,
@@ -49,7 +49,7 @@ Below are the SQL codes I used to extract the tables:
           group by location, population, date
           order by 4 desc
    
-6. **Percentage of Population Vaccinated**
+5. Percentage of Population Vaccinated
 
               select dea.location,
               		dea.population,
@@ -62,7 +62,7 @@ Below are the SQL codes I used to extract the tables:
               group by dea.location, dea.population
               order by 1,2 asc
    
-7. **Vaccination Daily Progression + Percentage of Population Vaccinated**
+6. Vaccination Daily Progression + Percentage of Population Vaccinated
 
               select dea.location,
               		dea.population,
@@ -76,7 +76,7 @@ Below are the SQL codes I used to extract the tables:
               where dea.continent is not null and vac.continent is not null
               group by dea.location, dea.population, dea.date
               order by 1,2 asc
-8. **Count of Infection with daily progression + Stringency Index**
+7. Count of Infection with daily progression + Stringency Index
 
 /* In this query, we compare daily infection numbers with stringent index, the comparison helps us to know how effective lockdown measures for reducing the spread of the virus were. i.e Did infection count reduce over the period stringent index(lockdown measures) were high or increase when stringent index was low or lockdown measures were softened???
 
